@@ -37,7 +37,6 @@ dependencies {
   ...
   
   implementation 'com.paypal.pyplcheckout:nativexo:2.1'
-  
   implementation 'syr.js.org:core:1.5.2'
   
   ...
@@ -57,7 +56,7 @@ dependencies {
             @Override
             public void completeCheckout(HashMap<String, String> returnParams) {
             
-                    //returnParams will contain all the requireed return 
+                    //returnParams will contain all the params required to process checkout
                     
                     Log.i("returnParams", returnParams.toString());
                     
@@ -80,10 +79,10 @@ dependencies {
         environment.kPYPLUrlScheme = "sampleapp";
         
         //if your app is native, use this method
-        //invoking checkout, you need to have an ec-token to call this. Replace the generated Ec-TOken with the once given by PayPal.
+        //invoking checkout, you need to have an ec-token to call this. Replace the **Generated EcToken** with the one given by PayPal.
         PYPLCheckout.getInstance().startCheckoutWithECToken(this, **Generated EcToken**);
         
-        //once the checkout is completed checkoutDelegate will receive the returned Params in a has map
+        //once the checkout is completed checkoutDelegate will receive the returned Params in a hash map
             
 ```
 
