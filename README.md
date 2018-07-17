@@ -44,6 +44,33 @@ dependencies {
 }
 ```
 
+
+### Setting up URI Schemes: This is used to listen to the redirect after checkout 
+
+In your AndroidManifest.xml add, 
+
+```
+ <activity android:name="com.paypal.pyplcheckout.PYPLCheckoutReceiver">
+   <intent-filter android:autoVerify="true">
+       <action android:name="android.intent.action.VIEW" />
+
+       <category android:name="android.intent.category.DEFAULT" />
+       <category android:name="android.intent.category.BROWSABLE" />
+
+       <data
+          android:scheme="testapp" 
+          android:host="paypalxo" />
+    </intent-filter>
+ </activity>
+ 
+```
+
+
+**Note: android:scheme under data is your app name, this should be the same as environment.kPYPLUrlScheme shown below.
+
+**Note: android:host under data should equal "paypalxo".
+
+
 ### Invoking Checkout:
 
 - Draw the PayPal checkout button onClick do the following
@@ -66,7 +93,7 @@ dependencies {
         // set the host
         PYPLCheckoutEnvironment environment = PYPLCheckoutEnvironment.getInstance();
         
-        //This by default points to live, change it to sandbox for testing
+        //This by default points to live, change it to sandbox for testing. Should be accompanied by a sandbox ec-token
         environment.kPYPLStageHost = "www.sandbox.paypal.com";
         
         //Set the checkoutDelegate
@@ -75,12 +102,12 @@ dependencies {
         //This is false by default, setting this to true will always open the experience in the browser
         environment.kPYPLWebBrowserOnly = true;
         
-        // set from the enviroment app name, this will be your app name
-        environment.kPYPLUrlScheme = "sampleapp";
+        // set from the enviroment app name, this will be your app name/scheme you declared in the manifest
+        environment.kPYPLUrlScheme = "testapp";
         
         //if your app is native, use this method
-        //invoking checkout, you need to have an ec-token to call this. Replace the **Generated EcToken** with the one given by PayPal.
-        PYPLCheckout.getInstance().startCheckoutWithECToken(this, **Generated EcToken**);
+        //invoking checkout, you need to have an ec-token to call this. Replace the **Generated Ec-Token** with the one given by PayPal.
+        PYPLCheckout.getInstance().startCheckoutWithECToken(this, **Generated Ec-Token**);
         
         //once the checkout is completed checkoutDelegate will receive the returned Params in a hash map
             
