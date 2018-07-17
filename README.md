@@ -37,7 +37,7 @@ dependencies {
   ...
   
   implementation 'com.android.support:customtabs:27.+'
-  implementation 'com.paypal.pyplcheckout:nativexo:2.1'
+  implementation 'com.paypal.pyplcheckout:nativexo:2.1.1'
   implementation 'syr.js.org:core:1.5.2'
   
   ...
