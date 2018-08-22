@@ -37,7 +37,7 @@ dependencies {
   ...
   
   implementation 'com.android.support:customtabs:27.+'
-  implementation 'com.paypal.pyplcheckout:nativexo:2.1'
+  implementation 'com.paypal.pyplcheckout:nativexo:2.1.1'
   implementation 'syr.js.org:core:1.5.2'
   
   ...
@@ -90,27 +90,27 @@ In your AndroidManifest.xml add,
                     
            }
  };
- 
-        // set the host
-        PYPLCheckoutEnvironment environment = PYPLCheckoutEnvironment.getInstance();
+
+// set the host
+PYPLCheckoutEnvironment environment = PYPLCheckoutEnvironment.getInstance();
         
-        //This by default points to live, change it to sandbox for testing. Should be accompanied by a sandbox ec-token
-        environment.kPYPLStageHost = "www.sandbox.paypal.com";
+//This by default points to live, change it to sandbox for testing. Should be accompanied by a sandbox ec-token
+environment.kPYPLStageHost = "www.sandbox.paypal.com";
+
+//Set the checkoutDelegate
+environment.kCheckoutDelegate = checkoutDelegate;
         
-        //Set the checkoutDelegate
-        environment.kCheckoutDelegate = checkoutDelegate;
+//This is false by default, setting this to true will always open the experience in the browser
+environment.kPYPLWebBrowserOnly = true;
         
-        //This is false by default, setting this to true will always open the experience in the browser
-        environment.kPYPLWebBrowserOnly = true;
+// set from the enviroment app name, this will be your app name/scheme you declared in the manifest
+environment.kPYPLUrlScheme = "testapp";
         
-        // set from the enviroment app name, this will be your app name/scheme you declared in the manifest
-        environment.kPYPLUrlScheme = "testapp";
+//if your app is native, use this method
+//invoking checkout, you need to have an ec-token to call this. Replace the **Generated Ec-Token** with the one given by PayPal.
+PYPLCheckout.getInstance().startCheckoutWithECToken(this, **Generated Ec-Token**);
         
-        //if your app is native, use this method
-        //invoking checkout, you need to have an ec-token to call this. Replace the **Generated Ec-Token** with the one given by PayPal.
-        PYPLCheckout.getInstance().startCheckoutWithECToken(this, **Generated Ec-Token**);
-        
-        //once the checkout is completed checkoutDelegate will receive the returned Params in a hash map
+//once the checkout is completed checkoutDelegate will receive the returned Params in a hash map
             
 ```
 
