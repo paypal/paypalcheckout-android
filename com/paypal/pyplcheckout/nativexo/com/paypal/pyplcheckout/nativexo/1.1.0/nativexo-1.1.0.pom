@@ -13,12 +13,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.paypal.risk</groupId>
-      <artifactId>android-risk-component</artifactId>
-      <version>3.6.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>com.android.support</groupId>
       <artifactId>customtabs</artifactId>
       <version>26.+</version>
