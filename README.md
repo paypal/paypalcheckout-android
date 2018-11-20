@@ -1,1 +1,1 @@
-[Android SDK Documentation](https://github.com/paypal/paypalcheckout-documentation/blob/master/android.md)
+[Android SDK Documentation](https://paypal.github.io/paypalnativecheckout-docs/Android/getting_started/)
